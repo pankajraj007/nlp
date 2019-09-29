@@ -72,7 +72,7 @@ def sentiments():
         else:
             result = "bad"
 
-    return render_template('sentiments.html', received_text=nline,score = score, verdict=result)
+    return render_template('sentiments.html', received_text= line,score = score, verdict=result)
 
 
 
