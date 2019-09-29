@@ -13,6 +13,7 @@ import re
 app = Flask(__name__)
 Bootstrap(app)
 
+@app.before_first_request
 def init():
     global model, word_index
     model  = keras.models.load_model('classify-1.h5')
