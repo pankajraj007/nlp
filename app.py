@@ -61,19 +61,18 @@ def sentiments():
         encode = keras.preprocessing.sequence.pad_sequences([encode], value=word_index["<PAD>"],padding="post",maxlen=250)
         predict = model.predict(encode)
         
-        #print(encode)
-        #print(nline)
-        #print(float(predict[0]))
-        #print(float(predict[0]) > 0.65)
-        #score = float(predict[0],4)
         score = float(predict[0])
         result =""
-        if float(predict[0]) > 0.65:
+        if float(predict[0]) > 0.85:
+            result = "Very Good"
+        elif float(predict[0]) > 0.65:
             result = "Good"
+        elif(float(predict[0]) > 0.45):
+            result = "Average"
         else:
             result = "bad"
 
-    return render_template('sentiments.html', received_text=line,score = score, verdict=result)
+    return render_template('sentiments.html', received_text=nline,score = score, verdict=result)
 
 
 
